@@ -1,18 +1,13 @@
 package com.fanziwen.login;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.telephony.TelephonyManager;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
-import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
@@ -92,12 +87,12 @@ public class LoginActivity extends BaseActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         x.view().inject(this);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            //透明状态栏
-            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            //透明导航栏
-            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-        }
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+//            //透明状态栏
+//            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+//            //透明导航栏
+//            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+//        }
         context = this;
 
         executeAmin();
@@ -157,42 +152,30 @@ public class LoginActivity extends BaseActivity {
 //                     获取手机token
 //                    TelephonyManager TelephonyMgr = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
 //                    String szImei = TelephonyMgr.getDeviceId();
-                    RequestParams params = new RequestParams(Const.WuYe.URL_LOGIN);
-//                    params.setConnectTimeout(30 * 1000);
+                    RequestParams params = new RequestParams(Const.House.URL_HOUSE_USER_APP_LOGIN);
+//                    loginName= 登录名称（手机号）&password=密码
                     params.addParameter("loginName", userName);
                     params.addParameter("password", userPassWord);
-                    params.addParameter("token", "11117");
-                    //获取手机token的值
-//                    TelephoneUtil.getIMEI(this);
-                    params.addParameter("systemType", "android");
-                    TelephonyManager tm = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
-                    String DEVICE_ID = tm.getDeviceId();
-                    params.addParameter("phoneId", DEVICE_ID);
-                    Log.e("DEVICE_ID", DEVICE_ID);
                     x.http().post(params, new Callback.CommonCallback<String>() {
                         @Override
                         public void onSuccess(String result) {
                             HttpRequestBase requestBase = MyApplication.gson.fromJson(result, HttpRequestBase.class);
-                            if (requestBase.respCode == 1001) {
+//                            if (requestBase.getCode() == 1001) {
                                 // 账号密码存入数据库
                                 spStore(requestBase);
-
                                 //跳转到主界面
                                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                                Bundle bundle = new Bundle();
-//                                bundle.putSerializable("bundle", list);
-//                                intent.putExtra(ExtraTag.APP_JSON, bundle);
                                 startActivity(intent);
                                 finish();
-                            } else {
-//                                T.showShort(this, requestBase.respMsg);
-                                goBtn.setEnabled(true);
-                                userET.setEnabled(true);
-                                passwordET.setEnabled(true);
-                                isGoClick = true;
-                                goBtn.setText(getResources().getText(R.string.login));
-                                T.showShort(LoginActivity.this, requestBase.respMsg);
-                            }
+//                            } else {
+////                                T.showShort(this, requestBase.respMsg);
+//                                goBtn.setEnabled(true);
+//                                userET.setEnabled(true);
+//                                passwordET.setEnabled(true);
+//                                isGoClick = true;
+//                                goBtn.setText(getResources().getText(R.string.login));
+//                            }
+                            T.showShort(LoginActivity.this, requestBase.getDesc());
                         }
 
                         @Override
@@ -202,7 +185,6 @@ public class LoginActivity extends BaseActivity {
                             passwordET.setEnabled(true);
                             isGoClick = true;
                             goBtn.setText("登陆");
-                            T.showShort(LoginActivity.this, "获取数据失败");
                             ex.printStackTrace();
                         }
 
@@ -360,6 +342,7 @@ public class LoginActivity extends BaseActivity {
     protected void onResume() {
         super.onResume();
     }
+
     @Override
     protected void onPause() {
         super.onPause();

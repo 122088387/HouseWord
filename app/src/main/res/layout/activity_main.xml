@@ -29,25 +29,31 @@
             android:layout_weight="1" />
     </LinearLayout>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/itemLineSize"
+        android:background="@color/list_view_line" />
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
-        android:background="@color/list_view_line">
+        android:background="@color/White">
 
         <ListView
             android:id="@+id/content_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/list_view_line"
-            android:divider="@android:color/darker_gray"
-            android:dividerHeight="0dp"
+            android:background="@color/White"
+            android:divider="@color/list_view_line"
+            android:dividerHeight="@dimen/itemLineSize"
             android:scrollbars="none" />
 
         <View
             android:id="@+id/zhe_zhao_ceng"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#22000000" />
+            android:background="#22000000"
+            android:visibility="gone" />
 
         <ListView
             android:id="@+id/my_list_view"

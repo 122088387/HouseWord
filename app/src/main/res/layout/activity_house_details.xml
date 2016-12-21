@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/White"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/include"
+        layout="@layout/include_title_bar" />
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/include">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/White"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/shopping_goods_details_image"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:background="@color/White"
+                android:scaleType="fitXY" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/itemLineSize"
+                android:background="@color/list_view_line" />
+
+            <TextView
+                android:id="@+id/house_details_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/d10"
+                android:layout_marginTop="@dimen/d10"
+                android:text="地址："
+                android:textColor="@color/color_999999"
+                android:textSize="@dimen/TextSize_5" />
+
+            <TextView
+                android:id="@+id/house_details_intrduce"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/d10"
+                android:layout_marginTop="@dimen/d10"
+                android:text="描述："
+                android:textColor="@color/color_999999"
+                android:textSize="@dimen/TextSize_5" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="预定" />
+    </RelativeLayout>
+</RelativeLayout>
