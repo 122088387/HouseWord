@@ -17,7 +17,7 @@ import org.xutils.x;
 
 
 /**
- * Activity的基类
+ * Activity的基类 11:44
  */
 public class BaseActivity extends AppCompatActivity {
 
