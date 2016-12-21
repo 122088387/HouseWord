@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/include_title_bar" />
+
+    <LinearLayout
+        android:id="@+id/ll_pop_add"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/White"
+        android:divider="@drawable/linearlayout_divider_gray"
+        android:orientation="horizontal"
+        android:showDividers="middle">
+
+        <com.fanziwen.view.DownPopWindowItemView
+            android:id="@+id/house_type"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <com.fanziwen.view.DownPopWindowItemView
+            android:id="@+id/house_type1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:background="@color/list_view_line">
+
+        <ListView
+            android:id="@+id/content_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/list_view_line"
+            android:divider="@android:color/darker_gray"
+            android:dividerHeight="0dp"
+            android:scrollbars="none" />
+
+        <View
+            android:id="@+id/zhe_zhao_ceng"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#22000000" />
+
+        <ListView
+            android:id="@+id/my_list_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/White"
+            android:divider="@color/huise2"
+            android:dividerHeight="0.5dp"
+            android:visibility="gone" />
+    </FrameLayout>
+
+
+</LinearLayout>
