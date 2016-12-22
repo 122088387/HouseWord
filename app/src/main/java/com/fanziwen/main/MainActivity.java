@@ -98,7 +98,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             HouseBean.DataBean dataBean = houseAdapter.getList().get(position);
-
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("bean",dataBean);
+            openActivty(MainActivity.this, HouseDetaisActivity.class, bundle, null);
         }
     };
 
