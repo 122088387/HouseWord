@@ -77,6 +77,24 @@ public class HouseBean implements Serializable {
         private int houseType;
         private int useType;
         private String url;
+        private String houseTypeName;
+        private String useTypeName;
+
+        public String getHouseTypeName() {
+            return houseTypeName;
+        }
+
+        public void setHouseTypeName(String houseTypeName) {
+            this.houseTypeName = houseTypeName;
+        }
+
+        public String getUseTypeName() {
+            return useTypeName;
+        }
+
+        public void setUseTypeName(String useTypeName) {
+            this.useTypeName = useTypeName;
+        }
 
         public int getId() {
             return id;

@@ -3,11 +3,13 @@ package com.fanziwen.base;
 import android.app.Application;
 import android.content.SharedPreferences;
 
+import com.baidu.mapapi.SDKInitializer;
 import com.google.gson.Gson;
 
 import org.xutils.x;
 
 import java.util.HashMap;
+
 
 /**
  * @anthor 王晓赛 or 2016/6/22
@@ -31,6 +33,8 @@ public class MyApplication extends Application {
         application = this;
         x.Ext.init(this);
         x.Ext.setDebug(true);
+        // 在使用 SDK 各组间之前初始化 context 信息，传入 ApplicationContext
+        SDKInitializer.initialize(this);
     }
 
     /**
