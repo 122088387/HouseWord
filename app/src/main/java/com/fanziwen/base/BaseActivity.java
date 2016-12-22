@@ -15,7 +15,7 @@ import org.xutils.x;
 
 
 /**
- * Activity的基类 11:44
+ * Activity的基类 上传home20:48
  */
 public class BaseActivity extends AppCompatActivity {
 
